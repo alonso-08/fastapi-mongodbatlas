@@ -3,6 +3,7 @@ from datetime import timedelta, datetime
 from operator import imod
 import sys
 import os
+from urllib import response
 
 from functions.functions import addComic, create_access_token, create_user, estructura_comic, estructura_personaje, pwd_context
 from settings import ALGORITHM, JWT_SECRET_KEY, SECRET_KEY
@@ -53,7 +54,7 @@ def get_comics_or_characters(option: Optional[str]=None,word: Optional[str]=None
             if word.lower() in item['name'].lower():
                 lista_personajes.append(item)        
         lista.append(lista_personajes)
-        lista.append([])
+        lista.append([])    
         results=lista
         return results
 
@@ -175,8 +176,6 @@ async def addmyComic(comic:ItemComic,token:str=Depends(oauth2_scheme)):
         #response={'message':'El comic no existe '}
     else:
         response={'message':'El comic no existe en la DB de Marvel '}
-    
-    
     return response
 
 
@@ -197,8 +196,15 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
         raise HTTPException(status_code=400,detail="contraseña incorrecta")
   
 
-
-
+@app.get("/getLayawayList")
+async def GetMyComics(token:str=Depends(oauth2_scheme)):
+    token_bonito=jwt.decode(token,SECRET_KEY,ALGORITHM)
+    email=token_bonito["email"]
+    #Para acceder a un doc incrustado se usa asi { "user.name": 'tichu'  }
+    all_comics=await connection.db.comics_user.find({"user.email":email}).to_list(1000)   
+        
+    response={"mis_comics":json.loads(json.dumps(all_comics,default=str))}
+    return response
 
 # Signup endpoint with the POST method
 @app.post("/users/register/")
