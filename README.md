@@ -10,12 +10,12 @@
 
 
 
-###Descripción 
+### Descripción 
 
 ----
 Creando microservicios en python, utilizando FASTAPI y guardando la data en MongoDB Atlas<br>
 
-###Instalacion y despliege<br>
+### Instalacion y despliege<br>
 
 `$ git clone git@github.com:alonso-08/fastapi-mongodbatlas.git`<br>
 `$ cd fastapi-mongodbatlas`<br>
@@ -23,20 +23,23 @@ Creando microservicios en python, utilizando FASTAPI y guardando la data en Mong
 `$ .\env\Scripts\activate  `<br>
 `$ pip install -r requirements.txt`<br>
 
-###Desplegando el servidor
-`$ uvicorn app:app --reload`
+### Desplegando el servidor
+`$ uvicorn app:app --reload` </br>
+
 Ahora abra su navegador favorito  http://localhost:8000/docs y empiece a probar los servicios creados.
 
-###Login y registro
+### Login y registro
 Para la validacion del login y creacion de comics para usuarios registrados, utilizar la herramienta de login que nos proporciona FastApi
 
 
-###Docker
+### Docker
 Para descargar la imagen hay que hacer pull
-`$ docker pull dockeralonsoll/coppel:v1`
+
+`$ docker pull dockeralonsoll/coppel:v1`</br>
 Una vez teniendo la imagen en nuestro equipo, solamente resta ejecutar el siguiente comando.
-`$ docker-compose up`
-###Archivo docker-compose.yml para más detalles.
+
+`$ docker-compose up`</br>
+### Archivo docker-compose.yml para más detalles.
 ```
 version: '3'
 services:
@@ -46,4 +49,4 @@ services:
     ports:
       - "5002:80"
 ```
-###El puerto en el cual va correr la aplicacion es port:5002
+### El puerto en el cual va correr la aplicacion es port:5002
