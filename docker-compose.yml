@@ -1,6 +1,8 @@
 version: '3'
 services:
-  fast-api:
+  coppel-api:
+    image: 'dockeralonsoll/coppel:v1'
+
     build: .
     ports:
       - "5002:80"

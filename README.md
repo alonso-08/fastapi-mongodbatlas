@@ -1,26 +1,46 @@
-# MongoDB with FastAPI
+### FastAPI con MongoDB Atlas
 
-This is a small sample project demonstrating how to build an API with [MongoDB](https://developer.mongodb.com/) and [FastAPI](https://fastapi.tiangolo.com/).
-It was written to accompany a [blog post](https://developer.mongodb.com/quickstart/python-quickstart-fastapi/) - you should go read it!
 
-## TL;DR
 
-If you really don't want to read the [blog post](https://developer.mongodb.com/quickstart/python-quickstart-fastapi/) and want to get up and running,
-activate your Python virtualenv, and then run the following from your terminal (edit the `DB_URL` first!):
 
-```bash
-# Install the requirements:
-pip install -r requirements.txt
+![](https://cosasdedevs.com/media/sections/images/fastapi.png)
 
-# Configure the location of your MongoDB database:
-export MONGODB_URL="mongodb+srv://<username>:<password>@<url>/<db>?retryWrites=true&w=majority"
+![](https://img.shields.io/github/stars/pandao/editor.md.svg) ![](https://img.shields.io/github/forks/pandao/editor.md.svg) ![](https://img.shields.io/github/tag/pandao/editor.md.svg) ![](https://img.shields.io/github/release/pandao/editor.md.svg) ![](https://img.shields.io/github/issues/pandao/editor.md.svg) ![](https://img.shields.io/bower/v/editor.md.svg)
 
-# Start the service:
-uvicorn app:app --reload
+
+
+###Descripción 
+
+----
+Creando microservicios en python, utilizando FASTAPI y guardando la data en MongoDB Atlas
+###Instalación y despliege
+`$ git clone git@github.com:alonso-08/fastapi-mongodbatlas.git`
+`$ cd fastapi-mongodbatlas`
+`$ virtualenv env`
+`$ .\env\Scripts\activate  `
+`$ pip install -r requirements.txt`
+
+###Desplegando el servidor
+`$ uvicorn app:app --reload`
+Ahora abra su navegador favorito  http://localhost:8000/docs y empiece a probar los servicios creados.
+
+###Login y registro
+Para la validacion del login y creacion de comics para usuarios registrados, utilizar la herramienta de login que nos proporciona FastApi
+
+
+###Docker
+Para descargar la imagen hay que hacer pull al repositorio
+`$ docker pull dockeralonsoll/coppel:v1`
+Una vez teniendo la imagen en nuestro equipo, solamente resta ejecutar el siguiente comando.
+`$ docker-compose up`
+###Archivo docker-compose.yml para más detalles.
 ```
-
-(Check out [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) if you need a MongoDB database.)
-
-Now you can load http://localhost:8000 in your browser ... but there won't be much to see until you've inserted some data.
-
-If you have any questions or suggestions, check out the [MongoDB Community Forums](https://developer.mongodb.com/community/forums/)!
+version: '3'
+services:
+  coppel-api:
+    image: 'dockeralonsoll/coppel:v1'
+	 build: .
+    ports:
+      - "5002:80"
+```
+###El puerto en el cual va correr la aplicacion es port:5002
