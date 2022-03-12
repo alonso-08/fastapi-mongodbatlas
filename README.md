@@ -41,17 +41,25 @@ docker pull dockeralonsoll/coppel:v1
 Para descargar la imagen hay que hacer pull
 
 `$ docker pull dockeralonsoll/coppel:v1`</br>
-Una vez teniendo la imagen en nuestro equipo, solamente resta ejecutar el siguiente comando.
+### Pasos para levantar la imagen de Docker
+Una vez teniendo la imagen en nuestro equipo, hay que utilizar el archivo docker-compose.yml
 
-`$ docker run  <image>`</br>
+- Descargamos el docker-compose.yml en un directorio
+- Abrimos la terminal y accedemos al directorio donde se descargo nuestro archivo.
+- Verificar que docker este corriendo en nuestro equipo
+- Ejecutar el siguiente comando  y se levantara nuestra aplicacion en la siguiente ruta
+-- El puerto en el cual va correr la aplicacion es 5002, http://127.0.0.1:5002/docs
+`$ docker-compose  up`</br>
 ### Archivo docker-compose.yml para más detalles.
 ```
 version: '3'
 services:
   coppel-api:
     image: 'dockeralonsoll/coppel:v1'
-	 build: .
+
+    build: .
     ports:
       - "5002:80"
 ```
 ### El puerto en el cual va correr la aplicacion es 5002, http://127.0.0.1:5002/docs
+### Es importante usar http y no https

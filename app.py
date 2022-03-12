@@ -225,3 +225,5 @@ async def signup(email, name: str,age:int, password: str):
 
     else:
         return {"message":"El campo edad debe ser un número"}
+
+
