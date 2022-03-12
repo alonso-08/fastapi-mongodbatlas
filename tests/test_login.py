@@ -23,24 +23,37 @@ import pytest
 
 client=TestClient(app)
 
-def test_read_main():
-    response = client.get("/test")
-    assert response.status_code == 200
-    assert response.json() == {"msg": "hola mundo"}
+
 '''
+from http import client
+import json
 import os
 import sys
+import warnings
 
+import pytest
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(SCRIPT_DIR))
-import unittest
+from app import app
 from urllib import response
+from fastapi.testclient import TestClient
+client=TestClient(app)
 
-from app import read_main
-class MyTest(unittest.TestCase):
-    def test_read_main(self):
-        response=read_main.get("/test")
-        assert response.status_code == 200
-        assert response.json() == {"msg": "hola mundo"}
-        
+
+def test_get_comics_or_characters():
+    option="personaje"
+    word="man"
+    response = client.get(f'/searchComics/{option}/{word}')
+    print(response.request)
+    assert response.status_code == 200    
+    #assert response.json() == [[],[]]
+
+def test_singup():
+    email='luis9@gmail.com'
+    name='tichu'
+    age=23
+    password='tichu'
+    response=client.post(f'/users/register/{email}/{name}/{age}/{password}')
+    assert response.status_code==200
+    assert response.json()=={'message':'El email ya existe en la base de datos'}

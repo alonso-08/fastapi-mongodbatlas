@@ -42,7 +42,7 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login")
 
 
 
-@app.get("/searchComics/")
+@app.get("/searchComics/{option}/{word}")
 def get_comics_or_characters(option: Optional[str]=None,word: Optional[str]=None):
     if option=='personaje' and  word:#searchComic/personaje/palabra
         results=m.characters.all(limit=100)        
@@ -55,7 +55,7 @@ def get_comics_or_characters(option: Optional[str]=None,word: Optional[str]=None
                 lista_personajes.append(item)        
         lista.append(lista_personajes)
         lista.append([])    
-        results=lista
+        results=lista        
         return results
 
     elif option=='personaje' and not word:
@@ -207,7 +207,7 @@ async def GetMyComics(token:str=Depends(oauth2_scheme)):
     return response
 
 # Signup endpoint with the POST method
-@app.post("/users/register/")
+@app.post("/users/register/{email}/{name}/{age}/{password}")
 async def signup(email, name: str,age:int, password: str):
     data = create_user(email, name,age, password)
     if isinstance(data['age'],int):
