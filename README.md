@@ -31,7 +31,7 @@ Ahora abra su navegador favorito  http://127.0.0.1:8000/docs y empiece a probar 
 ### Login y registro
 Para la validacion del login y creacion de comics para usuarios registrados, utilizar la herramienta de login que nos proporciona FastApi
 
-
+### Usar la imagen de docker para desplegar
 ### Docker
 Para descargar la imagen hay que hacer pull
 
@@ -49,4 +49,4 @@ services:
     ports:
       - "5002:80"
 ```
-### El puerto en el cual va correr la aplicacion es 5002, http://127.0.0.1:8000/docs
+### El puerto en el cual va correr la aplicacion es 5002, http://127.0.0.1:5002/docs
