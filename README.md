@@ -26,7 +26,7 @@ Creando microservicios en python, utilizando FASTAPI y guardando la data en Mong
 ### Desplegando el servidor
 `$ uvicorn app:app --reload` </br>
 
-Ahora abra su navegador favorito  http://localhost:8000/docs y empiece a probar los servicios creados.
+Ahora abra su navegador favorito  http://127.0.0.1:8000/docs y empiece a probar los servicios creados.
 
 ### Login y registro
 Para la validacion del login y creacion de comics para usuarios registrados, utilizar la herramienta de login que nos proporciona FastApi
@@ -38,7 +38,7 @@ Para descargar la imagen hay que hacer pull
 `$ docker pull dockeralonsoll/coppel:v1`</br>
 Una vez teniendo la imagen en nuestro equipo, solamente resta ejecutar el siguiente comando.
 
-`$ docker-compose up`</br>
+`$ docker run  <image>`</br>
 ### Archivo docker-compose.yml para más detalles.
 ```
 version: '3'
@@ -49,4 +49,4 @@ services:
     ports:
       - "5002:80"
 ```
-### El puerto en el cual va correr la aplicacion es port:5002
+### El puerto en el cual va correr la aplicacion es 5002, http://127.0.0.1:8000/docs
