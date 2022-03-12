@@ -49,6 +49,7 @@ Una vez teniendo la imagen en nuestro equipo, hay que utilizar el archivo docker
 - Verificar que docker este corriendo en nuestro equipo
 - Ejecutar el siguiente comando  y se levantara nuestra aplicacion en la siguiente ruta
 -- El puerto en el cual va correr la aplicacion es 5002, http://127.0.0.1:5002/docs
+
 `$ docker-compose  up`</br>
 ### Archivo docker-compose.yml para más detalles.
 ```
