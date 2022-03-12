@@ -32,6 +32,11 @@ Ahora abra su navegador favorito  http://127.0.0.1:8000/docs y empiece a probar 
 Para la validacion del login y creacion de comics para usuarios registrados, utilizar la herramienta de login que nos proporciona FastApi
 
 ### Usar la imagen de docker para desplegar
+
+### Repositorio de la imagen
+
+docker pull dockeralonsoll/coppel:v1
+
 ### Docker
 Para descargar la imagen hay que hacer pull
 
