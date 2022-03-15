@@ -36,7 +36,7 @@ def create_user(email, name,age, password):
     newuser.password = get_password_hash(password)
     return dict(newuser)
     
-def addComic(comic):
+def add_comic(comic):
     newcomic=Comic()
     newcomic.id=ObjectId()
     newcomic.id_comic=comic['id_comic']
